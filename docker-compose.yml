@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  web:
+    image: 127.0.0.1:5000/whisper-web
+    build: .
+    ports:
+      - 3000
+    networks:
+      infrastructure:
+        aliases:
+          - "whipser-web"
+    hostname: "whisper-web"
+    env_file:
+      - .env
+    restart: always
+
+networks:
+  infrastructure:
+    external:
+      name: infrastructure
